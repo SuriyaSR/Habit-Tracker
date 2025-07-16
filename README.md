@@ -58,7 +58,7 @@ Theme customization is possible via MUI's ThemeProvider
 npm install @mui/material @emotion/react @emotion/styled
 ```
 ### 📸 Screenshot
-https://github.com/user-attachments/assets/f8e345f9-0464-4f53-8acb-adf6a68b1799
+![Habit Tracker Screenshot](https://github.com/user-attachments/assets/f8e345f9-0464-4f53-8acb-adf6a68b1799)
 
 ## 🧠 Redux Toolkit Overview
  - State is managed via habitSlice.ts
