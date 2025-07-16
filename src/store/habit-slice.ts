@@ -1,10 +1,10 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 
 export interface Habit {
   id: string;
   name: string;
   frequency: "daily" | "weekly";
-  completedDated: string[];
+  completedDates: string[];
   createdAt: string;
 }
 
@@ -20,23 +20,32 @@ const habitSlice = createSlice({
   name: 'habits',
   initialState,
   reducers: {
-    addHabit: (state, action) => {
-      state.habits.push(action.payload);
+    addHabit: (state, action:PayloadAction<{name:string, frequency:"daily" | "weekly"}>) => {
+      const newHabit: Habit = {
+        id: Date.now().toString(),
+        name: action.payload.name,
+        frequency: action.payload.frequency,
+        completedDates: [],
+        createdAt: new Date().toISOString(),
+      };
+      state.habits.push(newHabit);      
     },
-    removeHabit: (state, action) => {
-      state.habits = state.habits.filter(habit => habit.id !== action.payload.id);
-    },
-    updateHabit: (state, action) => {
-      const index = state.habits.findIndex(habit => habit.id === action.payload.id);
-      if (index !== -1) {
-        state.habits[index] = action.payload;
+    toggleHabit:(state, action:PayloadAction<{id:string, date: string}>) => {
+      const habit = state.habits.find(h => h.id === action.payload.id);
+      if (habit) {
+        const index = habit.completedDates.indexOf(action.payload.date);
+        if (index > -1) {
+          habit.completedDates.splice(index, 1);
+        } else {
+          habit.completedDates.push(action.payload.date);
+        }
       }
     },
-    clearHabits: (state) => {
-      state.habits = [];
+    removeHabit: (state, action: PayloadAction<string>) => {
+      state.habits = state.habits.filter(habit => habit.id !== action.payload); 
     }
   }
 });
 
-export const { addHabit, removeHabit, updateHabit, clearHabits } = habitSlice.actions;
+export const { addHabit, toggleHabit, removeHabit } = habitSlice.actions;
 export default habitSlice.reducer;
