@@ -1,54 +1,80 @@
-# React + TypeScript + Vite
+# 🧠 Habit Tracker App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A simple and elegant **Habit Tracker** built with **React + TypeScript + Redux Toolkit + Material UI**.  
+Track your daily habits, toggle completions and visualize your streaks!
 
-Currently, two official plugins are available:
+🔗 **Live Demo:** [habit-tracker-vert-chi.vercel.app](https://habit-tracker-vert-chi.vercel.app/) 
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## ✨ Features
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- Add and remove habits
+- Toggle daily habit completion
+- Visualize habit streaks
+- Async state updates with Redux Thunk
+- Clean and responsive Material UI components
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+---
+
+## 🛠 Tech Stack
+
+- **Frontend:** React, TypeScript, Redux Toolkit, Redux Thunk
+- **Styling:** Material UI (`@mui/material`)
+- **State Management:** Redux Store, Slices, DevTools
+- **Deployment:** Vercel
+
+---
+
+## 📦 Getting Started
+
+### 1. Clone the repository
+```bash
+git clone https://github.com/SuriyaSR/Habit-Tracker.git
+cd Habit-Tracker
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+### 2. Install dependencies
+``` bash
+npm install
 ```
+
+### 3. Start the development server
+```bash
+npm run dev
+```
+App will run locally on http://localhost:5173/ (Vite default)
+
+## 🎨 Using Material UI
+This project uses **Material UI (MUI)** for UI components and layout.
+
+### If you want to customize or extend:
+You can import any components from @mui/material
+
+Theme customization is possible via MUI's ThemeProvider
+
+📦 Installed packages:
+```bash
+npm install @mui/material @emotion/react @emotion/styled
+```
+
+## 🧠 Redux Toolkit Overview
+ - State is managed via habitSlice.ts
+ - addHabit, toggleHabit, and removeHabit actions are dispatched from components
+ - Async logic handled via redux-thunk using extraReducers
+
+🛠 DevTools Integration:
+ - Use the Redux DevTools extension in your browser to inspect state changes in real time
+
+## To Do / Improvements
+ - Persist data with localStorage or Firebase
+ - Add calendar view
+ - Dark/light mode toggle
+ - Add progress analytics
+
+ ### 🤝 Contributing
+Pull requests and suggestions are welcome!
+If you find any bugs or want a feature added, feel free to open an issue.
+
+### 📄 License
+MIT License — Free to use, modify and share.
